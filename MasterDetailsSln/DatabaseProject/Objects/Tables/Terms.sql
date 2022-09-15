@@ -1,0 +1,5 @@
+﻿CREATE TABLE [Default].[Terms]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	[TermsName] NVARCHAR(100)
+)

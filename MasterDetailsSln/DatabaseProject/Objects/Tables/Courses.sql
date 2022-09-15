@@ -1,0 +1,5 @@
+﻿CREATE TABLE [Default].[Courses]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	[CourseName] NVARCHAR(50)
+)
