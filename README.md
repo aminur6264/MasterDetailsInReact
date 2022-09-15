@@ -1,5 +1,5 @@
 # Master Details In React
-
+https://master-details-react.aminurdev.com
 
 # Installation Guide
 1. Clean the Solution.
