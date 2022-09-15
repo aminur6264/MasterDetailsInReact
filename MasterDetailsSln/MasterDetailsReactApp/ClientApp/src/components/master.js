@@ -9,7 +9,6 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import TextField from '@mui/material/TextField';
-import DialogTitle from '@mui/material/DialogTitle';
 import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
@@ -18,13 +17,12 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import axios from 'axios';
-import moment from 'moment';
 import dayjs, { Dayjs } from 'dayjs';
 
 
 function Master() {
-    const baseUrl = 'http://localhost:5117';
-    //const baseUrl = 'https://master-details-react.aminurdev.com';
+    //const baseUrl = 'http://localhost:5117';
+    const baseUrl = 'https://master-details-react.aminurdev.com';
     const [openDialog, setOpenDialog] = useState(false);
     const [id, setId] = useState(0);
     const [name, setName] = useState('');
@@ -37,10 +35,7 @@ function Master() {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        
         loadEnrollmentData();
-
-
     }, [])
 
     const loadEnrollmentData = () => {
@@ -53,34 +48,28 @@ function Master() {
     }
 
     const handleClickOpenDialog = (paramId) => {
-
         setId(paramId);
         if (paramId == 0) {
-            console.log('id = 0 ');
             axios.get(baseUrl + '/Enrollment/GetAllCourse')
                 .then(function (response) {
-                    console.log(response.data);
                     setCourses([...response.data])
                     setOpenDialog(true);
                 }).catch(function (error) { }).then(function () { });
 
             setOpenDialog(true);
         } else {
-            console.log('id != 0 ');
-            console.log(paramId);
             axios.get(baseUrl + '/Enrollment/GetEnrollById', {
                 headers: {
                     "id": paramId
                 }
             }).then(function (response) {
-                console.log(response.data);
                 setCourses([...response.data.courses])
                 setName(response.data.studentName);
                 setEnrollmentDate(response.data.enrollmentDate);
                 setTerm(response.data.terms);
                 setOpenDialog(true);
             }).catch(function (error) {
-                console.log(error);
+
             }).then(function () {
 
             });
