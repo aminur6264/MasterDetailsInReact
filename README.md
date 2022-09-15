@@ -1,2 +1,4 @@
-# MasterDetailsInReact
-MasterDetailsInReact
+# Master Details In React
+
+
+# Installation Guide
